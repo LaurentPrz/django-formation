@@ -1,4 +1,4 @@
-"""MyProject URL Configuration
+"""todomanager URL Configuration
 
 The `urlpatterns` list routes URLs to views. For more information please see:
     https://docs.djangoproject.com/en/1.8/topics/http/urls/
@@ -14,7 +14,17 @@ Including another URLconf
 """
 from django.conf.urls import include, url
 from django.contrib import admin
+from todo.views import TaskListView
+from todo.views import TaskRetrieveView
+from todo.views import TaskCreateView
+from todo.views import TaskUpdateView
+
 
 urlpatterns = [
     url(r'^admin/', include(admin.site.urls)),
+    url(r'^$', TaskListView.as_view(), name='task-list'),
+    url(r'create/', TaskCreateView.as_view(), name='create'),
+    url(r'^(?P<pk>\d+)/$', TaskRetrieveView.as_view(), name='retrieve'),
+    url(r'^(?P<pk>\d+)/update/', TaskUpdateView.as_view(), name='update'),
+    url(r'^(?P<pk>\d+)/delete/', TaskDeleteView.as_view(), name='delete'),
 ]

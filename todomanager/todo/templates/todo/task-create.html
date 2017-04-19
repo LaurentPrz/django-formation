@@ -1,0 +1,15 @@
+<html>
+
+    <head>
+        <title>App Todo </title>
+    </head>
+    <body>
+        <h1> Bienvenue dans le tpl. </h1>
+    
+        <form action="." method="POST">
+            {% csrf_token %}
+            {{form}}
+            <input type="submit"></input>
+        </form>
+    </body>
+</html>
